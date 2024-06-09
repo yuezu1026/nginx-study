@@ -1,6 +1,5 @@
 version: '2.27'
-volumes:
-  postgres2:
+
    
 services: 
   nginx1:
@@ -9,7 +8,7 @@ services:
     networks: 
       - nginx-net
     volumes:
-      - postgres2:/var/lib/postgresql/data
+      - c:/data/nginx/html1:/usr/share/nginx/html
     ports:
       - "8888:80"
   nginx2:
@@ -18,7 +17,11 @@ services:
     networks: 
       - nginx-net
     volumes:
-      - postgres2:/var/lib/postgresql/data
+      - c:/data/nginx/html2:/usr/share/nginx/html
     ports:
       - "9999:80"
+
+networks:
+  nginx-net:
+    driver: bridge
     
