@@ -1,0 +1,24 @@
+version: '2.27'
+volumes:
+  postgres2:
+   
+services: 
+  nginx1:
+    image: nginx
+    restart: always  #每次总是启动
+    networks: 
+      - nginx-net
+    volumes:
+      - postgres2:/var/lib/postgresql/data
+    ports:
+      - "8888:80"
+  nginx2:
+    image: nginx
+    restart: always  #每次总是启动
+    networks: 
+      - nginx-net
+    volumes:
+      - postgres2:/var/lib/postgresql/data
+    ports:
+      - "9999:80"
+    
